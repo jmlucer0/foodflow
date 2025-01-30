@@ -6,6 +6,10 @@ public class Product {
     private String name;
     private Double price;
 
+    public Product(long id, String name, double price) {
+
+    }
+
     public Long getId() {
         return id;
     }
