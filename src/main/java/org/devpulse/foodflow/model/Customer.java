@@ -5,6 +5,14 @@ public class Customer {
     private String name;
     private String lastName;
     private String address;
+    private Boolean active = true;
+
+    public Customer(Long id, String name, String lastName, String address) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
@@ -36,5 +44,13 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }
