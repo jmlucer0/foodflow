@@ -1,5 +1,7 @@
 package org.devpulse.foodflow.model;
 
+import org.devpulse.foodflow.model.dtos.CustomerRegisterDto;
+
 public class Customer {
     private Long id;
     private String name;
@@ -12,6 +14,10 @@ public class Customer {
         this.name = name;
         this.lastName = lastName;
         this.address = address;
+    }
+
+    public Customer(CustomerRegisterDto newCustomer) {
+
     }
 
     public Long getId() {
@@ -53,4 +59,16 @@ public class Customer {
     public void setActive(Boolean active) {
         this.active = active;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", active=" + active +
+                '}';
+    }
+
 }
