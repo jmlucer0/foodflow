@@ -1,15 +1,18 @@
 package org.devpulse.foodflow.viewmodel;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.devpulse.foodflow.exceptions.InvalidCustomerException;
 import org.devpulse.foodflow.model.dtos.CustomerRegisterDto;
 import org.devpulse.foodflow.service.CustomerService;
 
-public class CustomerRegisterViewModel {
-    private final CustomerService customerService;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+public class CustomerRegisterViewModel implements Initializable {
+    private CustomerService customerService;
 
     @FXML
     private TextField txtCustomerName;
@@ -20,18 +23,21 @@ public class CustomerRegisterViewModel {
     @FXML
     private Button btnSubmit;
 
+
     public CustomerRegisterViewModel(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @FXML
-    public void initialize() {
+    public CustomerRegisterViewModel() {
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         if (txtCustomerName != null && txtCustomerLastname != null && txtCustomerAddress != null) {
             System.out.println("Controles correctamente inicializados.");
         }
         btnSubmit.setOnAction(event -> submitCustomerRegistration());
     }
-
 
     public void submitCustomerRegistration() {
         try {
@@ -44,7 +50,7 @@ public class CustomerRegisterViewModel {
                     txtCustomerAddress.getText()
             );
             System.out.println(customerRegisterDto);
-           customerService.registerCustomer(customerRegisterDto);
+            customerService.registerCustomer(customerRegisterDto);
 
         } catch (InvalidCustomerException e) {
             e.getMessage();

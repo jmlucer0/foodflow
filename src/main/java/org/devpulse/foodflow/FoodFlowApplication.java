@@ -22,12 +22,12 @@ public class FoodFlowApplication extends Application {
         CustomerService customerService = new CustomerService(customerRepository);
 
         FXMLLoader fxmlLoader = new FXMLLoader(FoodFlowApplication.class.getResource("/org/devpulse/foodflow/view/MainWindow.fxml"));
+
         fxmlLoader.setControllerFactory(param -> {
             if (param == CustomerRegisterViewModel.class) {
                 return new CustomerRegisterViewModel(customerService);
             }
             try {
-                // Retornar el controlador por defecto si no es CustomerRegisterViewModel
                 return param.getDeclaredConstructor().newInstance();
             } catch (Exception e) {
                 e.printStackTrace();
